@@ -18,8 +18,6 @@ samples = m_sampler(li_case1, 2)
 results = li_2010_case1(*samples.T)
 analysis = m_analyzer(li_case1, samples, results)
 
-print(samples.shape)
-
 df = analysis.to_df().rename(columns={'mu': '$\\mu$', 'mu_star': '$\\mu*$'})
 ax = df.loc[:, ['$\\mu$', '$\\mu*$']].plot(kind='bar', 
                         title='Unexpected Morris results for Case #1 in Li et al. (2010)\n(n=2, N=12)',

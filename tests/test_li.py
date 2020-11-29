@@ -41,12 +41,19 @@ def test_li_2010_parameter_active():
     """
     np.random.seed(101)
 
-    base = [0.0, 0.0, 0.0, 0.0, 0.0]
+    base = [-100.0, -100.0, -100.0, -100.0, -100.0]
     nominal_result = li_2010_case1_inactive(*base)  # run model at nominal position
 
-    for idx, x_i in enumerate([1.0, 1.0, 1.0, 1.0, 1.0]):
+    for idx, x_i in enumerate([100.0, 100.0, 100.0, 100.0, 100.0]):
         tmp = base[:]  # copy nominal values
         tmp[idx] = x_i  # perturb parameter value
         result = li_2010_case1_inactive(*tmp)  # run model
 
+        x_diff = np.abs(base[idx] - tmp[idx])
+        y_diff = np.abs(nominal_result - result)
+
+        # Test sensitivity measure
+        assert (y_diff / x_diff) != 0.0, f"Perturbing parameter x_{idx+1} should affect SA metric!"
+
+        # Alternative test for inactivity
         assert result != nominal_result, f"Perturbing parameter x_{idx+1} should affect results!"
