@@ -1,4 +1,4 @@
-def li_2010_case1(x1, x2, x3, x4, x5):
+def li_2010_case1_incorrect(x1, x2, x3, x4, x5):
     """An incorrect implementation of Li et al. (2010) example case #1.
 
     `y` should be the sum of all inputs, but here an inadvertent typo subtracts x5.

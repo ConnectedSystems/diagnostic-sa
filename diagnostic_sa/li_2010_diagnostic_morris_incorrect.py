@@ -4,7 +4,7 @@ from SALib.analyze.morris import analyze as m_analyzer
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from diagnostic_sa.li_2010 import li_2010_case1
+from diagnostic_sa.li_2010 import li_2010_case1_incorrect
 from settings import *
 
 
@@ -15,7 +15,7 @@ li_case1 = {
 }
 
 samples = m_sampler(li_case1, 2)
-results = li_2010_case1(*samples.T)
+results = li_2010_case1_incorrect(*samples.T)
 analysis = m_analyzer(li_case1, samples, results)
 
 df = analysis.to_df().rename(columns={'mu': '$\\mu$', 'mu_star': '$\\mu*$'})

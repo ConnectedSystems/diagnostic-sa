@@ -20,8 +20,6 @@ samples = m_sampler(li_case1, 2)
 results = li_2010_case1_inactive(*samples.T)
 analysis = m_analyzer(li_case1, samples, results)
 
-num_evals = samples.shape[0]
-
 df = analysis.to_df().rename(columns={'mu': '$\\mu$', 'mu_star': '$\\mu*$'})
 ax = df.loc[:, ['$\\mu$', '$\\mu*$']].plot(kind='bar', 
                         title=f'Morris SA\n(n=2, N=12)',
